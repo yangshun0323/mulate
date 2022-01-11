@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        $(function () {
+            $("#fixed_mp").click(function(e){
+                $("#fixed_mp").removeClass("show");
+            });
+
+            $("#online_open").click(function(){
+                $("#online_open").prop("style","right: -40px;");
+                $("#online_lx").prop("style","right: 10px;");
+            });
+
+            $("#online_close").click(function(){
+                $("#online_open").prop("style","right: 10px;");
+                $("#online_lx").prop("style","right: -200px;");
+            });
+
+            $("#gotop").click(function () {
+                $('html,body').animate({scrollTop:'0px'},'slow');
+            });
+
+            // 为窗口的scroll事件绑定处理函数
+            $(window).scroll(function(){
+                // 获取页面的最小高度，无传入值则默认为600像素
+               var minHeight = 600;
+                // 获取窗口的滚动条的垂直滚动距离
+                var s = $(window).scrollTop();
+
+                // 当窗口的滚动条的垂直距离大于页面的最小高度时，让返回顶部图标渐现，否则渐隐
+                if( s > minHeight){
+                    $("#gotop").fadeIn(500);
+                }else{
+                    $("#gotop").fadeOut(500);
+                };
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div id="footer">
+    <p>慕莱特空间设计 ©2020<a class="beian" href="http://www.beian.miit.gov.cn/" style="display:inline; width:auto; color:#8e8e8e" target="_blank">陕ICP备20009223号 </a></p>
+</div>
+<div id="shares"><a id="sshare"><i class="fa fa-share-alt"></i></a>
+    <a href="https://weibo.com/u/7318362076" target="_blank" id="sweibo"><i class="fa fa-weibo"></i></a>
+    <a  target="_blank" id="mpbtn222" style="display: none;"><i class="fa fa-weixin"></i></a>
+    <a href="javascript:;" id="gotop" style="display: block;"><i class="fa fa-angle-up"></i></a>
+</div>
+<div class="fixed" id="fixed_weixin">
+    <div class="fixed-container">
+        <div id="qrcode"></div>
+        <p>扫描二维码分享到微信</p>
+    </div>
+</div>
+<div id="online_open" style="right: 10px;"><i class="fa fa-comments-o"></i></div>
+<div id="online_lx" style="right: -200px;">
+    <div id="olx_head">在线咨询<i class="fa fa-times fr" id="online_close"></i></div>
+    <ul id="olx_qq">
+        <li><a href="tencent://message/?uin=504266804&amp;Site=uelike&amp;Menu=yes"><i class="fa fa-qq"></i>504266804</a></li>
+    </ul>
+    <div id="olx_tel">
+        <div><i class="fa fa-phone"></i>联系电话</div>
+        <p>029-87873980<br></p>
+    </div>
+</div>
+<div class="hide">
+</div>
+<div class="fixed" id="fixed_mp"><div class="fixed-container"><img style="width: 100%;height: 90%;" src="/Images/wechat.jpg"><p>微信扫一扫</p></div></div>
+</body>
+</html>

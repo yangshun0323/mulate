@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        $(function () {
+            $("#mpbtn").click(function(){
+                $("#fixed_mp").addClass("show");
+            });
+
+            $(".inputsub").click(()=>{
+                var url="http://39.99.198.128:8081/mulate/api/submit?1=1";
+                if($("#datadiv input[name=username]").val()){
+                    url +="&username="+$("#datadiv input[name=username]").val();
+                }else {
+                    alert("请填写姓名");
+                    return;
+                }
+                if($("#datadiv input[name=email]").val()){
+                    url +="&email="+$("#datadiv input[name=email]").val();
+                }
+
+                if($("#datadiv input[name=tel]").val()){
+                    url +="&tel="+$("#datadiv input[name=tel]").val();
+                }else {
+                    alert("请填写电话");
+                    return;
+                }
+                if($("#datadiv textarea[name=content]").val()){
+                    url +="&content="+$("#datadiv textarea[name=content]").val();
+                }
+
+                $.ajax({
+                    type: "post",
+                    url: url,
+                    contentType: "application/json;charset=utf-8",
+                    crossDomain: true,
+                    dataType: "json",
+                    beforeSend: function () {
+                    },
+                    success: function (data) {
+                        alert("提交成功，我们会第一时间与您取得联系！");
+                    },
+                    complete: function () {
+
+                    },
+                    error: function (data) {
+                        alert("报错了");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="mcontact" class="module">
+    <div class="bgmask"></div>
+    <div class="content" style="background: #f7f7f7;">
+        <div class="header wow fadeInUp fw animated" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <p class="title">C O N T A CT</p>
+            <p class="subtitle">05</p>
+        </div>
+        <div id="contactlist" class="fw">
+            <div id="contactinfo" class="fl wow" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                <h3 class="ellipsis name">慕莱特空间设计</h3>
+                <p class="ellipsis add"><span>地点：</span><a style="color: #989898;" href="/default.html?page=zuobiao&title=坐标" target="_blank">西安市雁塔区南飞鸿广场5号楼9层934室</a></p>
+                <p class="ellipsis zip"><span>邮编：</span>710000</p>
+                <p class="ellipsis tel"><span>电话：</span>029-87873980</p>
+                <p class="ellipsis mobile"><span>手机：</span>15929325415</p>
+                <p class="ellipsis fax"><span>传真：</span>029-87873980</p>
+                <p class="ellipsis email"><span>邮箱：</span>mulate@foxmail.com</p>
+                <div>
+                    <a class="fl" target="_blank" href="https://weibo.com/u/7318362076"><i class="fa fa-weibo"></i></a>
+                    <a class="fl" target="_blank" href="tencent://message/?uin=504266804&amp;Site=uemo&amp;Menu=yes"><i class="fa fa-qq"></i></a>
+                    <a class="fl" target="_blank" href="https://shop209329715.taobao.com/index.htm?spm=2013.1.w5002-17410164913.2.e9ae6956rlUB4Z" ><img width="20"  height="20" style="padding: 5px;" src="/Images/project/taobao.png"/></a>
+                    <a id="mpbtn" class="fl" style="" ><i class="fa fa-weixin"></i></a>
+                </div>
+            </div>
+            <div class="fr wow  contactform" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s;">
+                <div  id="datadiv">
+                    <p>
+                        <input type="text" class="inputtxt name" name="username" placeholder="姓名" autocomplete="off" required="">
+                    </p>
+                    <p>
+                        <input type="text" class="inputtxt email" name="email" placeholder="邮箱" autocomplete="off">
+                    </p>
+                    <p>
+                        <input type="text" class="inputtxt tel" name="tel" placeholder="电话" autocomplete="off">
+                    </p>
+                    <p>
+                        <textarea class="inputtxt cont" name="content" placeholder="内容" autocomplete="off"></textarea>
+                    </p>
+                    <p><input class="inputsub" type="button" value="提交"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+    <style type="text/css">
+        #mpbtn{ border-bottom: 1px solid rgba(0, 0, 0, .1);
+            height: 38px;
+            position: fixed;
+            bottom: 80px;right:10px;background-color: #fff;display: none; }
+    </style>
+</html>
